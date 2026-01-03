@@ -211,13 +211,20 @@
         const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='${theme.dotMajor}'><path d='${githubPath}'/></svg>`;
         return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
       })();
+      const githubUrl = "https://github.com/igapyon/AnalogClocket/";
+      const openGithub = () => {
+        const w = window.open(githubUrl, "_blank", "noopener");
+        if(w) w.opener = null;
+      };
 
       for(let i=0;i<60;i++){
         const p = polar(i*6, dialR * cfg.tickRadiusRatio);
         if(i === 30){
-          ticks.image(githubIconUri)
+          const githubIcon = ticks.image(githubIconUri)
             .size(githubSize, githubSize)
             .center(p.x, p.y);
+          githubIcon.attr({ cursor: "pointer" });
+          githubIcon.on("click", openGithub);
         }else{
           ticks.circle(i%5===0 ? cfg.tickMajor * scale : cfg.tickMinor * scale)
             .center(p.x, p.y)
