@@ -11,6 +11,7 @@ AnalogClocket は、単一 HTML で動作するアナログ時計 + ミニフリ
 ## 使い方
 - `index.html` をブラウザで直接開く
 - GitHub Pages で公開する場合はリポジトリのルートに置くだけ
+- 公開先: https://igapyon.github.io/AnalogClocket/
 
 ## 調整ポイント
 - 日付の大きさ: `DATE_SCALE`
