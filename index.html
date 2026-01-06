@@ -43,7 +43,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.2.4/dist/svg.min.js"></script>
 
   <script>
-    const weekJP = ["日","月","火","水","木","金","土"];
+    const weekJP = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const pad2 = (n) => String(n).padStart(2,"0");
 
     const cfg = Object.freeze({
@@ -109,7 +109,8 @@
         cardY: 128,
         dowFont: 32,
         ampmFont: 26,
-        dowX: 18,
+        dowX: 8,
+        ampmX: 18,
         dowY: -18,
         ampmY: 24,
         opticalNudge: 5,
@@ -460,7 +461,7 @@
           .radius(6)
           .fill("#e38a4a")
           .attr({
-            x: x0 + cardW * 2 + gap + cfgDate.dowX,
+            x: x0 + cardW * 2 + gap + cfgDate.ampmX,
             y: y0 + cardH/2 + cfgDate.ampmY,
             "shape-rendering":"geometricPrecision"
           });
@@ -473,7 +474,7 @@
           })
           .fill("#fff")
           .attr({
-            x: x0 + cardW * 2 + gap + cfgDate.dowX,
+            x: x0 + cardW * 2 + gap + cfgDate.ampmX,
             y: y0 + cardH/2 + cfgDate.ampmY,
             "text-anchor":"start",
             "dominant-baseline":"middle"
