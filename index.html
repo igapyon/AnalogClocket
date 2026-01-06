@@ -103,6 +103,7 @@
         scale: 0.3,
         yearFont: 44,
         yearY: 78,
+        yearX: -16,
         cardW: 90,
         cardH: 72,
         cardGap: 14,
@@ -426,8 +427,8 @@
           .font({family:"Georgia,'Times New Roman',serif",size:cfgDate.yearFont,weight:700})
           .fill("#1a1a1a")
           .attr({
-            x: DATE_LAYOUT_W/2,
-            y: cfgDate.yearY,
+            x: DATE_LAYOUT_W/2 + cfgDate.yearX,
+            y: cfgDate.yearY + 12,
             "text-anchor":"middle",
             "dominant-baseline":"middle"
           });
