@@ -400,6 +400,7 @@
       const DATE_LAYOUT_W = cfgDate.layoutW;
       const DATE_LAYOUT_H = cfgDate.layoutH;
       const DATE_SCALE = opts.dateScale ?? cfgDate.scale;
+      let appliedScale = DATE_SCALE;
 
       const dateRoot = draw.group();
       let dateInner;
@@ -534,13 +535,17 @@
       }
 
       function clampIntoView(margin=cfgDate.clampMargin){
-        const b = dateRoot.rbox(draw);
+        const extra = 4 * appliedScale;
+        const halfW = (DATE_LAYOUT_W * appliedScale) / 2 + extra;
+        const halfH = (DATE_LAYOUT_H * appliedScale) / 2 + extra;
+        const cx = dateRoot.cx();
+        const cy = dateRoot.cy();
         let dx=0, dy=0;
 
-        if(b.x < margin) dx = margin - b.x;
-        if(b.y < margin) dy = margin - b.y;
-        if(b.x2 > metrics.base - margin) dx = (metrics.base - margin) - b.x2;
-        if(b.y2 > metrics.base - margin) dy = (metrics.base - margin) - b.y2;
+        if(cx - halfW < margin) dx = margin - (cx - halfW);
+        if(cy - halfH < margin) dy = margin - (cy - halfH);
+        if(cx + halfW > metrics.base - margin) dx = (metrics.base - margin) - (cx + halfW);
+        if(cy + halfH > metrics.base - margin) dy = (metrics.base - margin) - (cy + halfH);
 
         if(dx || dy) dateRoot.dmove(dx, dy);
       }
@@ -567,7 +572,8 @@
         },
         placeDateOutsideAngle,
         setScale(scale){
-          dateInner.untransform().scale(scale * DATE_SCALE);
+          appliedScale = scale * DATE_SCALE;
+          dateInner.untransform().scale(appliedScale);
         },
         rebuild(){
           build();
