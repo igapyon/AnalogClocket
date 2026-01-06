@@ -2,17 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="AnalogClocketは単一HTMLで動作する、シンプルで軽快なアナログ時計のStatic Web Appです。" />
+  <meta name="description" content="AnalogClocket is a simple and lightweight analog clock static web app that runs in a single HTML file." />
   <meta name="color-scheme" content="light" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AnalogClocket</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="AnalogClocket" />
-  <meta property="og:description" content="AnalogClocketは単一HTMLで動作する、シンプルで軽快なアナログ時計のStatic Web Appです。" />
+  <meta property="og:description" content="AnalogClocket is a simple and lightweight analog clock static web app that runs in a single HTML file." />
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AnalogClocket" />
-  <meta name="twitter:description" content="AnalogClocketは単一HTMLで動作する、シンプルで軽快なアナログ時計のStatic Web Appです。" />
+  <meta name="twitter:description" content="AnalogClocket is a simple and lightweight analog clock static web app that runs in a single HTML file." />
   <meta name="twitter:image" content="og-image.png" />
   <style>
     body{
@@ -43,7 +43,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.2.4/dist/svg.min.js"></script>
 
   <script>
-    const weekJP = ["日","月","火","水","木","金","土"];
+    const weekJP = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const pad2 = (n) => String(n).padStart(2,"0");
 
     const cfg = Object.freeze({
@@ -103,13 +103,15 @@
         scale: 0.3,
         yearFont: 44,
         yearY: 78,
+        yearX: -24,
         cardW: 90,
         cardH: 72,
         cardGap: 14,
         cardY: 128,
         dowFont: 32,
         ampmFont: 26,
-        dowX: 18,
+        dowX: 8,
+        ampmX: 18,
         dowY: -18,
         ampmY: 24,
         opticalNudge: 5,
@@ -400,6 +402,7 @@
       const DATE_LAYOUT_W = cfgDate.layoutW;
       const DATE_LAYOUT_H = cfgDate.layoutH;
       const DATE_SCALE = opts.dateScale ?? cfgDate.scale;
+      let appliedScale = DATE_SCALE;
 
       const dateRoot = draw.group();
       let dateInner;
@@ -424,8 +427,8 @@
           .font({family:"Georgia,'Times New Roman',serif",size:cfgDate.yearFont,weight:700})
           .fill("#1a1a1a")
           .attr({
-            x: DATE_LAYOUT_W/2,
-            y: cfgDate.yearY,
+            x: DATE_LAYOUT_W/2 + cfgDate.yearX,
+            y: cfgDate.yearY + 18,
             "text-anchor":"middle",
             "dominant-baseline":"middle"
           });
@@ -459,7 +462,7 @@
           .radius(6)
           .fill("#e38a4a")
           .attr({
-            x: x0 + cardW * 2 + gap + cfgDate.dowX,
+            x: x0 + cardW * 2 + gap + cfgDate.ampmX,
             y: y0 + cardH/2 + cfgDate.ampmY,
             "shape-rendering":"geometricPrecision"
           });
@@ -472,7 +475,7 @@
           })
           .fill("#fff")
           .attr({
-            x: x0 + cardW * 2 + gap + cfgDate.dowX,
+            x: x0 + cardW * 2 + gap + cfgDate.ampmX,
             y: y0 + cardH/2 + cfgDate.ampmY,
             "text-anchor":"start",
             "dominant-baseline":"middle"
@@ -534,13 +537,17 @@
       }
 
       function clampIntoView(margin=cfgDate.clampMargin){
-        const b = dateRoot.bbox();
+        const extra = 4 * appliedScale;
+        const halfW = (DATE_LAYOUT_W * appliedScale) / 2 + extra;
+        const halfH = (DATE_LAYOUT_H * appliedScale) / 2 + extra;
+        const cx = dateRoot.cx();
+        const cy = dateRoot.cy();
         let dx=0, dy=0;
 
-        if(b.x < margin) dx = margin - b.x;
-        if(b.y < margin) dy = margin - b.y;
-        if(b.x2 > metrics.base - margin) dx = (metrics.base - margin) - b.x2;
-        if(b.y2 > metrics.base - margin) dy = (metrics.base - margin) - b.y2;
+        if(cx - halfW < margin) dx = margin - (cx - halfW);
+        if(cy - halfH < margin) dy = margin - (cy - halfH);
+        if(cx + halfW > metrics.base - margin) dx = (metrics.base - margin) - (cx + halfW);
+        if(cy + halfH > metrics.base - margin) dy = (metrics.base - margin) - (cy + halfH);
 
         if(dx || dy) dateRoot.dmove(dx, dy);
       }
@@ -567,7 +574,8 @@
         },
         placeDateOutsideAngle,
         setScale(scale){
-          dateInner.untransform().scale(scale * DATE_SCALE);
+          appliedScale = scale * DATE_SCALE;
+          dateInner.untransform().scale(appliedScale);
         },
         rebuild(){
           build();

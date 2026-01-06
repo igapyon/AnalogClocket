@@ -1,5 +1,40 @@
 # AnalogClocket
 
+**AnalogClocket** is a simple and practical analog clock **Static Web App**.
+It runs as a single HTML file with no server or build steps required.
+Open it directly in a browser to see the analog clock and the mini flip-style date display.
+
+## Features
+
+- Simple and practical analog clock UI
+- `Static Web App` that works in a **single HTML file**
+- No server, no build steps
+- Works by opening the local HTML file in a browser
+- Ready for static hosting (e.g., GitHub Pages)
+- **Low load design**
+  - The clock updates only on second boundaries
+  - Static elements redraw only on initial render and resize
+- Click the GitHub icon at the 30-minute position to open the repository
+
+### Demo
+
+- [https://igapyon.github.io/AnalogClocket/](https://igapyon.github.io/AnalogClocket/)
+
+## Usage
+
+- Open `index.html` directly in a browser
+- For GitHub Pages, place the file at the repository root
+
+## Libraries
+
+- SVG.js (CDN, MIT License)
+
+## License
+
+- Apache-2.0
+
+---
+
 **AnalogClocket** は、シンプルで実用的なアナログ時計の **Static Web App** です。
 単一の HTML ファイルだけで動作し、サーバーやビルド工程は不要。
 ブラウザで直接開くだけで、アナログ時計とミニフリップ形式の日付表示が動作します。
@@ -29,7 +64,4 @@
 
 - SVG.js（CDN 経由、MIT License）
 
-## License
-
 - Apache-2.0
-
