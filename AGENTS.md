@@ -1,20 +1,24 @@
 # AGENTS.md
 
-このリポジトリは、シンプルで実用的なアナログ時計の Static Web App です。単一 HTML で動作し、サーバー不要・ビルド不要で、ブラウザで直接開くだけで動きます。
+This repository is a simple and practical analog clock Static Web App. It runs as a single HTML file, requires no server or build steps, and works by opening it directly in a browser.
 
-## 目的と方針
-- Static Web App として配布しやすい構成を維持する
-- 見た目の良さと軽快な動作を重視する
-- 更新は秒境界に合わせ、不要な再描画を避ける
-- 静的要素は初期描画とリサイズ時のみ再描画する
-- 日付などの情報は変化時のみ更新する
+## Goals and principles
+- Keep the structure easy to distribute as a Static Web App
+- Prioritize good visuals and smooth performance
+- Align updates to second boundaries to avoid unnecessary redraws
+- Redraw static elements only on initial render and resize
+- Update date-related information only when it changes
+- Avoid OS-dependent layout measurements when clamping date UI; use fixed layout dimensions with current scale instead
 
-## 中心ファイル
-- 主要な作業対象: `index.html`
+## Primary file
+- Main working file: `index.html`
 
-## 実行方法
-- `index.html` をブラウザで直接開く（ビルド不要）
-- GitHub Pages で公開する場合はリポジトリのルートに配置する
+## How to run
+- Open `index.html` directly in a browser (no build needed)
+- For GitHub Pages, place it at the repository root
 
-## 外部ライブラリ
-- SVG.js（CDN、MIT License）
+## External library
+- SVG.js (CDN, MIT License)
+
+## Repository
+- https://github.com/igapyon/AnalogClocket

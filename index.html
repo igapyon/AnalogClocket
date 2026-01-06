@@ -2,17 +2,17 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="AnalogClocketは単一HTMLで動作する、シンプルで軽快なアナログ時計のStatic Web Appです。" />
+  <meta name="description" content="AnalogClocket is a simple and lightweight analog clock static web app that runs in a single HTML file." />
   <meta name="color-scheme" content="light" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AnalogClocket</title>
   <meta property="og:type" content="website" />
   <meta property="og:title" content="AnalogClocket" />
-  <meta property="og:description" content="AnalogClocketは単一HTMLで動作する、シンプルで軽快なアナログ時計のStatic Web Appです。" />
+  <meta property="og:description" content="AnalogClocket is a simple and lightweight analog clock static web app that runs in a single HTML file." />
   <meta property="og:image" content="og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AnalogClocket" />
-  <meta name="twitter:description" content="AnalogClocketは単一HTMLで動作する、シンプルで軽快なアナログ時計のStatic Web Appです。" />
+  <meta name="twitter:description" content="AnalogClocket is a simple and lightweight analog clock static web app that runs in a single HTML file." />
   <meta name="twitter:image" content="og-image.png" />
   <style>
     body{
@@ -43,7 +43,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.2.4/dist/svg.min.js"></script>
 
   <script>
-    const weekJP = ["日","月","火","水","木","金","土"];
+    const weekJP = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const pad2 = (n) => String(n).padStart(2,"0");
 
     const cfg = Object.freeze({
@@ -103,13 +103,15 @@
         scale: 0.3,
         yearFont: 44,
         yearY: 78,
+        yearX: -24,
         cardW: 90,
         cardH: 72,
         cardGap: 14,
         cardY: 128,
         dowFont: 32,
         ampmFont: 26,
-        dowX: 18,
+        dowX: 8,
+        ampmX: 18,
         dowY: -18,
         ampmY: 24,
         opticalNudge: 5,
@@ -425,8 +427,8 @@
           .font({family:"Georgia,'Times New Roman',serif",size:cfgDate.yearFont,weight:700})
           .fill("#1a1a1a")
           .attr({
-            x: DATE_LAYOUT_W/2,
-            y: cfgDate.yearY,
+            x: DATE_LAYOUT_W/2 + cfgDate.yearX,
+            y: cfgDate.yearY + 18,
             "text-anchor":"middle",
             "dominant-baseline":"middle"
           });
@@ -460,7 +462,7 @@
           .radius(6)
           .fill("#e38a4a")
           .attr({
-            x: x0 + cardW * 2 + gap + cfgDate.dowX,
+            x: x0 + cardW * 2 + gap + cfgDate.ampmX,
             y: y0 + cardH/2 + cfgDate.ampmY,
             "shape-rendering":"geometricPrecision"
           });
@@ -473,7 +475,7 @@
           })
           .fill("#fff")
           .attr({
-            x: x0 + cardW * 2 + gap + cfgDate.dowX,
+            x: x0 + cardW * 2 + gap + cfgDate.ampmX,
             y: y0 + cardH/2 + cfgDate.ampmY,
             "text-anchor":"start",
             "dominant-baseline":"middle"
