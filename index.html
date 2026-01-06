@@ -534,7 +534,7 @@
       }
 
       function clampIntoView(margin=cfgDate.clampMargin){
-        const b = dateRoot.bbox();
+        const b = dateRoot.rbox(draw);
         let dx=0, dy=0;
 
         if(b.x < margin) dx = margin - b.x;
