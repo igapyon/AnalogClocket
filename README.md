@@ -29,6 +29,10 @@ Open it directly in a browser to see the analog clock and the mini flip-style da
 
 - SVG.js (CDN, MIT License)
 
+## Maintenance
+
+- When making changes, update the `APP_VERSION` string in `index.html`.
+
 ## License
 
 - Apache-2.0
@@ -63,5 +67,9 @@ Open it directly in a browser to see the analog clock and the mini flip-style da
 ## 使用ライブラリ
 
 - SVG.js（CDN 経由、MIT License）
+
+## メンテナンス
+
+- 変更を加えたときは `index.html` の `APP_VERSION` を更新する
 
 - Apache-2.0
