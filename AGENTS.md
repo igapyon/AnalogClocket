@@ -13,6 +13,12 @@ This repository is a simple and practical analog clock Static Web App. It runs a
 ## Primary file
 - Main working file: `index.html`
 
+## Versioning
+- `APP_VERSION` format: `v` + `YYYYMMDD` + suffix (`a`, then `b`, `c`, ...)
+
+## Debugging
+- If the date UI disappears or drifts, temporarily add a console trace in `placeDateOutsideAngle()` to log center and bbox values on each update, then remove the trace after verifying.
+
 ## How to run
 - Open `index.html` directly in a browser (no build needed)
 - For GitHub Pages, place it at the repository root
