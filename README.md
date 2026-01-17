@@ -19,6 +19,7 @@ Open it directly in a browser to view the analog clock and the mini flip-style d
 ### Demo
 
 - [https://igapyon.github.io/AnalogClocket/](https://igapyon.github.io/AnalogClocket/)
+- ![AnalogClocket screenshot](og-image.png)
 
 ## Usage
 
@@ -66,6 +67,7 @@ Open it directly in a browser to view the analog clock and the mini flip-style d
 ### デモ
 
 - [https://igapyon.github.io/AnalogClocket/](https://igapyon.github.io/AnalogClocket/)
+- ![AnalogClocket スクリーンショット](og-image.png)
 
 ## 使い方
 
