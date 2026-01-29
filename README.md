@@ -23,7 +23,8 @@ Open it directly in a browser to view the analog clock and the mini flip-style d
 
 ## Usage
 
-- Open `index.html` directly in a browser
+- Offline: open `index.html` directly in a browser (SVG.js is bundled inline)
+- Online: open `index-online.html` (uses SVG.js via CDN)
 - For GitHub Pages, place the file at the repository root and enable Pages on the `main` branch (root)
 
 ## GitHub Pages quick setup
@@ -36,7 +37,7 @@ Open it directly in a browser to view the analog clock and the mini flip-style d
 
 ## Libraries
 
-- SVG.js (CDN, MIT License)
+- SVG.js (MIT License)
 
 ## Maintenance
 
@@ -71,7 +72,8 @@ Open it directly in a browser to view the analog clock and the mini flip-style d
 
 ## 使い方
 
-- `index.html` をブラウザで直接開く
+- オフライン: `index.html` をブラウザで直接開く（SVG.js はインライン同梱）
+- オンライン: `index-online.html` をブラウザで開く（SVG.js を CDN 経由で使用）
 - GitHub Pages で公開する場合は、リポジトリのルートに置いて `main` ブランチの `/(root)` を有効化するだけ
 
 ## GitHub Pages かんたんセットアップ
@@ -84,7 +86,7 @@ Open it directly in a browser to view the analog clock and the mini flip-style d
 
 ## 使用ライブラリ
 
-- SVG.js（CDN 経由、MIT License）
+- SVG.js（MIT License）
 
 ## メンテナンス
 
